@@ -14,8 +14,8 @@ const client = new tmi.Client({
 		secure: true
 	},
 	identity: {
-		username: PROCESS.ENV.USERNAME,
-		password: PROCESS.ENV.OAUTH
+		username: process.env.USERNAME,
+		password: process.env.OAUTH
 	},
 	channels: config.channelName
 });
