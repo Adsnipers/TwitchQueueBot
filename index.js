@@ -47,7 +47,11 @@ async function join(channel, tags, message, self) {
 
 async function queueList(channel, tags, message, self) {
     if (message.toLowerCase() == '!queue') {
-        client.say(channel, `@${tags.username} heres the current queue :D 1. ${queue[0]} 2. ${queue[1]} 3. ${queue[2]} 4. ${queue[3]} 5. ${queue[4]}`);
+        if (typeof queue[0] !== "undefined") {
+            client.say(channel, `@${tags.username} -> current queue: 1. ${queue[0]} 2. ${queue[1]} 3. ${queue[2]} 4. ${queue[3]} 5. ${queue[4]}`);
+        } else {
+            client.say(channel, `@${tags.username} -> The queue is empty`);
+        }
     }
 }
 
@@ -67,4 +71,4 @@ async function remove(channel, tags, message, self) {
             client.say(channel, `@${tags.username} Only the streamer and mods can do that ;-;`)
         }
     }
-}
+}112
