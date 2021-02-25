@@ -48,7 +48,17 @@ async function join(channel, tags, message, self) {
 async function queueList(channel, tags, message, self) {
     if (message.toLowerCase() == '!queue') {
         if (typeof queue[0] !== "undefined") {
-            client.say(channel, `@${tags.username} -> current queue: 1. ${queue[0]} 2. ${queue[1]} 3. ${queue[2]} 4. ${queue[3]} 5. ${queue[4]}`);
+            if (typeof queue[4] !== "undefined") {
+                client.say(channel, `@${tags.username} -> current queue: 1. ${queue[0]} 2. ${queue[1]} 3. ${queue[2]} 4. ${queue[3]} 5. ${queue[4]}`);
+            } else if (typeof queue[3] !== "undefined") {
+                client.say(channel, `@${tags.username} -> current queue: 1. ${queue[0]} 2. ${queue[1]} 3. ${queue[2]} 4. ${queue[3]}`);
+            } else if (typeof queue[2] !== "undefined") {
+                client.say(channel, `@${tags.username} -> current queue: 1. ${queue[0]} 2. ${queue[1]} 3. ${queue[2]}`);
+            } else if (typeof queue[1] !== "undefined") {
+                client.say(channel, `@${tags.username} -> current queue: 1. ${queue[0]} 2. ${queue[1]}`);
+            } else {
+                client.say(channel, `@${tags.username} -> current queue: 1. ${queue[0]}`);
+            }
         } else {
             client.say(channel, `@${tags.username} -> The queue is empty`);
         }
